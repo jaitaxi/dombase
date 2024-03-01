@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <form id="student">
+        <input type="text" id="name" placeholder="Name" />
+        <input type="number" id="number" placeholder="Number" />
+        <input type="number" id="GRId" placeholder="GRId" />
+        <input type="text" id="course" placeholder="Course" />
+        <input type="submit" value="Add">
+    </form>
+    <hr />
+
+
+    <table border="2px solid black" cellspacing="10px" cellpadding="10px">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>GRId</th>
+                <th>Course</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="data"></tbody>
+    </table>
+
+
+    <div id="box"></div>
+</body>
+
+
+<script>
+    document.getElementById("student").addEventListener("submit", function (e) {
+        e.preventDefault()
+        let name = document.getElementById("name").value
+        let number = document.getElementById("number").value
+        let GRId = document.getElementById("GRId").value
+        let course = document.getElementById("course").value
+
+        console.log(name, number, GRId, course);
+
+        let tr = document.createElement("tr")
+        let td1 = document.createElement("td")
+        td1.innerHTML = name
+        let td2 = document.createElement("td")
+        td2.innerHTML = number
+        let td3 = document.createElement("td")
+        td3.innerHTML = GRId
+        let td4 = document.createElement("td")
+        td4.innerHTML =course
+        let td5 = document.createElement("td")
+        td5.innerHTML = "Delete"
+        td5.style.background = "red"
+        td5.addEventListener("click", function (ev) {
+            ev.target.parentNode.remove()
+        });
+        tr.append(td1, td2, td3, td4, td5)
+        console.log(tr);
+        document.getElementById("data").append(tr)
+    })
+</script>
+
+</html>
